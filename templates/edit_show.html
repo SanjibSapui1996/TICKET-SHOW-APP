@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3> {{ admin }}'s Dashboard </h3>
+    <div style="position: absolute; left: 1000px; top: 7px">
+        <a href=""> summary </a> | <a href="/admin_logout"> logout </a>
+    </div>
+    <p> Editing a show </p>
+    <form method="post" style="margin-left: 400px;">
+        <label for="name"> Show Name </label>
+        <input name="s_name" type="text" id="name"/>
+        
+        <br><br>
+
+        <label for="Ratings"> Ratings </label>
+        <input name="rate" type="number" id="Ratings"/>
+        
+        <br><br>
+
+        <label for="datetime"> Timing </label>
+        <input name="time" type="text" id="datetime"/>
+        
+        <br><br>
+
+        <label for="tag"> Tags </label>
+        <input name="tag" type="text" id="tag"/>
+
+        <br><br>
+
+        <label for="cost"> Prices </label>
+        <input name="price" type="number" id="cost"/>
+
+        <br><br>
+        <label for="theatres"> Choose venues where this show will be displayed </label>
+        <br>
+        <select name="v_id" id="theatres">
+            {% for one in venues %}
+                <option value="{{one.venue_id}}">{{one.venue_name}}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+
+        <input type="submit" value="Save"/>
+    </form>
+</body>
+</html>

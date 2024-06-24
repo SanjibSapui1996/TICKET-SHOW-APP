@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3> {{ admin }}'s Dashboard </h3>
+    <div style="position: absolute; top: 7px; left: 1000px;">
+        <a href=""> summary </a> | <a href="/admin_logout"> logout </a>
+    </div>
+    <div>
+        {% if venues|length == 0 %}No show or venue created.{% endif %}
+        <ul>
+            {% for one in venues %}
+            <li style="display: block;">
+                <span style="font-size: 2em;"> {{one['venue_name']}} </span><br><br>
+                {% if one.shows|length == 0 %}No show created.{% endif %}
+                <ul>
+                    {% for s in one.shows %}
+                    <li style="display: inline-block;">
+                        <span style="font-size: 1.5em;"> {{s['show_name']}} </span><br>
+                        <a href="/admin_dashboard/edit_show/{{s.show_id}}"> Edit </a>
+                        <a href="/admin_dashboard/delete_show/{{s.show_id}}"> Delete </a>
+                    </li>
+                    {% endfor %}
+                </ul>
+                <a href="/admin_dashboard/create_show" style="border-radius: 10px; background-color: rgba(0,0,255,0.5); font-size: 1.5em;"> + </a><br><br>
+                <a href="/admin_dashboard/edit_venue/{{one['venue_id']}}" style="border: 0.5px solid;"> Edit </a>
+                <a href="/admin_dashboard/delete_venue/{{one['venue_id']}}" style="border: 0.5px solid;"> Delete </a>
+            </li><br><br>
+            {% endfor %}
+        </ul>
+    </div>
+    <a href="/admin_dashboard/create_venue" style="border-radius: 20px; font-size: 3em; background-color: rgba(0,0,255,0.5); margin-left: 10em;"> + </a>
+</body>
+</html>

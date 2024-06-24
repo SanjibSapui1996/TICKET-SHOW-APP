@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <p> Venue search results </p>
+        <p>{% if venues | length == 0 %} No result found {% endif %}</p>
+        <ul>
+            {% for one in venues %}
+            <li> {{one.venue_name}} </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div>
+        <p> Show search results </p>
+        <p>{% if shows | length == 0 %} No result found {% endif %}</p>
+        <ul>
+            {% for one in shows %}
+            <li> {{one.show_name}} </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

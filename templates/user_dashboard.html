@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3> {{user}}'s Dashboard </h3>
+    <div style="position: absolute; left: 1000px; top: 7px">
+        <a href=""> Profile </a> | <a href="/user_bookings/{{user}}"> Bookings </a> | <a href="/user_logout"> Logout </a>
+    </div>
+    <ul>
+        {% for ven in venues %}
+            <li style="display: block;">
+                <span style="font-size: 2em;"> {{ ven['venue_name'] }} </span>
+                <ul>
+                    {% for one in ven.shows %}
+                        <li style="display: inline-block">
+                            {{one.show_name}} {{one.timing}}
+                            <br>
+                            <a href="/user_dashboard/book_show/{{ven.venue_id}}/{{one.show_id}}"> Book </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </li><br><br>
+        {% endfor %}
+    </ul>
+    <div style="font-size: 20px; margin-left: 400px;">
+        <a href="/user_dashboard/venue_search"> Search by Venue </a> | <a href="/user_dashboard/show_search"> Search by Show </a>
+    </div>
+</body>
+</html>

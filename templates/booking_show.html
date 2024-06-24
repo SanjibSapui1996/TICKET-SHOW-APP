@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3> {{user}}'s Dashboard </h3>
+    <div style="position: absolute; left: 1000px; top: 7px">
+        <a href=""> Profile </a> | <a href=""> Bookings </a> | <a href="/user_logout"> Logout </a>
+    </div>
+    <p> Booking for: {{s.show_name}} {{v.venue_name}} </p>
+    <p style="position: absolute; left: 1000px; top: 10px"> Time: {{s.timing}} </p>
+    <form method="post">
+        <label for="restseats"> Available Seats: {{available_seat}} </label>
+        <br><br>
+        <label for="no"> Number </label>
+        <input type="number" name="no" id="no">
+        <br><br>
+        <label for="price"> Price </label>
+        <input type="number" name="price" id="price" placeholder="{{s.price}}">
+        <br><br>
+        <label for="total"> Total </label>
+        <input type="number" name="total" id="total">
+        <br><br>
+        <input type="submit" value="Confirm Booking">
+    </form>
+</body>
+</html>
